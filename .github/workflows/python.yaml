@@ -21,7 +21,7 @@ jobs:
       - name: Save output
         run: echo "${{ steps.python-version.outputs.stdout }}" >> python_versions.txt
       - name: artifact
-        uses: actions/artifact@v2
+        uses: actions/artifact@v3
         with:
           name: python-versions
           path: python_versions.txt
