@@ -20,8 +20,8 @@ jobs:
         id: python-version
       - name: Save output
         run: echo "${{ steps.python-version.outputs.stdout }}" >> python_versions.txt
-      - name: artifact
-        uses: actions/artifact@v3
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
         with:
           name: python-versions
           path: python_versions.txt
