@@ -20,8 +20,7 @@ jobs:
         id: python-version
       - name: Save output
         run:
-          mkdir -p output
-          echo "${{ steps.python-version.outputs.stdout }}" >> output/python_versions.txt
+          mkdir -p output echo "${{ steps.python-version.outputs.stdout }}" >> output/python_versions.txt
       - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
