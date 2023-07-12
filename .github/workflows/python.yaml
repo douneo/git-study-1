@@ -26,8 +26,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-versions
-          path: python_versions.txt
-        
-        
-        
-
+          path: output/python_versions.txt
