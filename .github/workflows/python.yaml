@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-versions
-          path: output/python_versions.txt
+          path: ${{ github.workspace }}/output/${{ steps.python-version.outputs.id }}
