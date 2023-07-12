@@ -24,8 +24,11 @@ jobs:
         id: python-version
         
       - name: Save output
-        run: python -c "import sys; print(sys.version)" > $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
-       
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/output
+           echo ${{ steps.python-version.outputs.id }} >> $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
+
+        
       - name: Upload output
         uses: actions/upload-artifact@v2
         with:
