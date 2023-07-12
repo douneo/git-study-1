@@ -19,7 +19,9 @@ jobs:
         run: python -c "import sys; print(sys.version)"
         id: python-version
       - name: Save output
-        run: echo "::set-env name=PYTHON_VERSION::$(python -c 'import sys; print(sys.version)')"
+        run:
+          mkdir -p output
+          echo "${{ steps.python-version.outputs.stdout }}" >> output/python_versions.txt
       - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
