@@ -1,6 +1,8 @@
 name: Python
 
-on: workflow_dispatch
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
@@ -10,20 +12,24 @@ jobs:
         python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+        
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+        
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
         id: python-version
+        
       - name: Save output
         run: |
           mkdir -p $GITHUB_WORKSPACE/output
           echo ${{ steps.python-version.outputs.id }} >> $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
-      - name: upload-artifact
-        uses: actions/upload-artifact@v3
+        
+      - name: Upload output
+        uses: actions/upload-artifact@v2
         with:
-          name: python-versions_${{ matrix.python-version }}
+          name: python_versions_${{ matrix.python-version }}
           path: $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
