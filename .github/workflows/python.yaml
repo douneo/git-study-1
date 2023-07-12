@@ -21,9 +21,9 @@ jobs:
       - name: Save output
         run: |
           mkdir -p $GITHUB_WORKSPACE/output
-          echo "" >> $GITHUB_WORKSPACE/output/python_versions.txt
+          echo ${{ steps.python-version.outputs.id }} >> $GITHUB_WORKSPACE/output/python_versions.txt
       - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
           name: python-versions
-          path: ${{github.workspace}}/output/python_versions.txt
+          path: output/python_versions.txt
