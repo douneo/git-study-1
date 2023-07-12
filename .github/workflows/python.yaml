@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-versions_${{ matrix.python-version }}
-          path: ${{ github.workspace }}/output/${{ matrix.python-version }}
+          path: $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
