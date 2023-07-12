@@ -17,3 +17,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+        id: python-version
+      - name: Save output
+        run:
+          mkdir -p output
+          echo "${{ steps.python-version.outputs.stdout }}" >> output/python_versions.txt
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-versions
+          path: output/python_versions.txt
