@@ -26,7 +26,7 @@ jobs:
       - name: Save output
         run: |
           mkdir -p $GITHUB_WORKSPACE/output
-           echo ${{ steps.python-version.outputs.id }} >> $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
+          python -c "import sys; print(sys.version)" >> $GITHUB_WORKSPACE/output/python_versions_${{ matrix.python-version }}.txt
 
         
       - name: Upload output
